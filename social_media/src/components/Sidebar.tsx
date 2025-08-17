@@ -8,11 +8,21 @@ import {
   faListUl,
   faUser,
   faEllipsis,
+  faRightFromBracket
   
   
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { authService } from "../services/authService";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    authService.logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div >
 
@@ -49,6 +59,13 @@ const Sidebar = () => {
       <FontAwesomeIcon icon={faEllipsis} className="text-xl" />
       <span className="icon">More</span>
     </div>
+      <div
+          onClick={handleLogout}
+          className="link mb-8 cursor-pointer "
+        >
+          <FontAwesomeIcon icon={faRightFromBracket} className="text-xl" />
+          <span className="icon">Logout</span>
+        </div>
   </nav>
 </div>
 
