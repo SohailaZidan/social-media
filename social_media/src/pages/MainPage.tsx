@@ -1,7 +1,6 @@
 import Sidebar from "../components/Sidebar";
 import TrendingAndFollow from "../components/TrendingAndFollow";
-import Home from "./Home";
-
+import { Outlet } from "react-router-dom";
 const MainPage = () => {
   return (
     <main className="bg-white dark:bg-[#15202b]">
@@ -10,7 +9,7 @@ const MainPage = () => {
           <Sidebar />
         </div>
         <div className="w-full xl:w-1/2 h-screen overflow-y-auto">
-          <Home />
+          <Outlet />
         </div>
         <div className="hidden w-[30%] xl:block ">
           <TrendingAndFollow />

@@ -2,7 +2,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { GuestRoute, ProtectedRoute } from "../guards/AuthRoutes";
 import Login from "../pages/Login";
 import MainPage from "../pages/MainPage";
-
+import Home from "../pages/Home";
+import Profile from "../pages/Profile";
 
 export default function AppRoutes() {
   return (
@@ -19,15 +20,18 @@ export default function AppRoutes() {
       />
 
       <Route
-        path="/home"
         element={
           <ProtectedRoute>
             <MainPage />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
+

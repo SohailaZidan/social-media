@@ -7,7 +7,7 @@ import {
   faHeart,
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
-import { profileImages } from "../../shared/images";
+import { getProfileImage } from "../../shared/images";
 
 interface Props {
   post: Post;
@@ -26,10 +26,7 @@ export default function PostCard({
       <div className="flex p-4 pb-0">
         <img
           className="h-9 w-9 rounded-full"
-          src={
-            profileImages[(user?.id ?? 1) - 1] ||
-            "https://tse4.mm.bing.net/th/id/OIP.5QylMk-hjGNwEP548-V_QQHaLF?rs=1&pid=ImgDetMain&o=7&rm=3"
-          }
+          src={getProfileImage(user?.id ?? 0)}
           alt={user?.name || "user"}
         />
         <p className="ml-2 flex flex-shrink-0 items-center font-medium text-gray-800 dark:text-white">
