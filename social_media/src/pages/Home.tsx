@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
-import PostCard from "../components/post/PostCard";
-import CommentsModal from "../components/post/CommentsModal";
-import AddPostForm from "../components/post/AddPostForm";
+import PostCard from "../components/posts/PostCard";
+import CommentsModal from "../components/comments/CommentsModal";
+import AddPostForm from "../components/posts/AddPostForm";
 import type { Post } from "../interfaces/post";
 import type { Comment } from "../interfaces/comment";
 import { postsService } from "../services/postService";
 import type { User } from "../interfaces/user";
 import { usersService } from "../services/usersService";
 import LoadingCard from "../components/LoadingCard";
-
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [allComments, setAllComments] = useState<Comment[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [loadingComments, setLoadingComments] = useState(false);
 
   // Load Posts + Users
-useEffect(() => {
+  useEffect(() => {
     Promise.all([
       postsService.getPosts(),
       usersService.getUsers(),
@@ -40,29 +37,18 @@ useEffect(() => {
 
   const openComments = async (postId: number) => {
     setSelectedPostId(postId);
-    setLoadingComments(true);
-    try {
-      const data = await postsService.getComments(postId);
-      setComments(data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoadingComments(false);
-    }
   };
 
   const closeComments = () => {
     setSelectedPostId(null);
-    setComments([]);
   };
 
-if (loadingPosts)
-  return (
-    <>
-    <LoadingCard/>
-    </>
-  );
-
+  if (loadingPosts)
+    return (
+      <>
+        <LoadingCard />
+      </>
+    );
 
   return (
     <div className="flex flex-col gap-3 p-2">
@@ -107,7 +93,9 @@ if (loadingPosts)
                 post={post}
                 user={user}
                 onOpenComments={openComments}
-                commentsCount={allComments.filter(c => c.postId === post.id).length}
+                commentsCount={
+                  allComments.filter((c) => c.postId === post.id).length
+                }
               />
             );
           })
@@ -115,14 +103,9 @@ if (loadingPosts)
       </div>
 
       {selectedPostId && (
-        <CommentsModal
-          comments={comments}
-          loading={loadingComments}
-          onClose={closeComments}
-        />
+        <CommentsModal postId={selectedPostId} onClose={closeComments} />
       )}
 
-      
       <div className=" p-4 border border-gray-200 dark:border-gray-700"></div>
     </div>
   );

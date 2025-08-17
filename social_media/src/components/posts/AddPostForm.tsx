@@ -3,6 +3,7 @@ import type { Post } from "../../interfaces/post";
 import { postsService } from "../../services/postService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { authService } from "../../services/authService";
 
 interface Props {
   onPostAdded: (post: Post) => void;
@@ -15,11 +16,15 @@ const AddPostForm = ({ onPostAdded }: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!body.trim()) return;
-
     setLoading(true);
     try {
+        const currentUserId = authService.getCurrentUserId();
+      if (!currentUserId) {
+        throw new Error("User not logged in");
+      }
+
       const newPost = await postsService.createPost({
-        userId: 1,
+        userId: currentUserId,
         title: "Auto Title", 
         body,
       });

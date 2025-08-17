@@ -32,4 +32,17 @@ export const postsService = {
     if (!res.ok) throw new Error("Failed to create post");
     return res.json();
   },
+
+  async createComment(newComment: Omit<Comment, "id">): Promise<Comment> {
+  const res = await fetch(`${BASE_URL}/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newComment),
+  });
+  if (!res.ok) throw new Error("Failed to create comment");
+  return res.json();
+},
+
 };
