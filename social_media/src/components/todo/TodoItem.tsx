@@ -27,7 +27,7 @@ const TodoItem = ({ todo, onToggle, onDelete, onEdit }: TodoItemProps) => {
 
   return (
     <li
-      className="flex items-center justify-between bg-white shadow-sm 
+      className="flex items-center justify-between bg-white shadow-sm dark:bg-[#253341]
       rounded-xl px-4 py-3 transition transform hover:scale-[1.02] hover:shadow-lg"
     >
       <div className="flex items-center flex-1">
@@ -42,15 +42,15 @@ const TodoItem = ({ todo, onToggle, onDelete, onEdit }: TodoItemProps) => {
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
             autoFocus
-            className="border rounded-lg px-2 py-1 flex-1 focus:outline-none 
+            className="border rounded-lg px-2 py-1 flex-1 dark:text-white focus:outline-none 
               focus:ring-2 focus:ring-blue-400"
           />
         ) : (
           <span
             className={`flex-1 text-lg ${
               todo.completed
-                ? "line-through text-gray-400 italic"
-                : "text-gray-700"
+                ? "line-through text-gray-400 dark:text-gray-100 "
+                : "text-gray-700 dark:text-gray-300"
             }`}
           >
             {todo.title}

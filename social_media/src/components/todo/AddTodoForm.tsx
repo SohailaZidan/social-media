@@ -23,13 +23,13 @@ const AddTodoForm = ({ onAdd }: AddTodoFormProps) => {
     <div className="w-full mx-auto mb-6">
       <form
         onSubmit={handleSubmit}
-        className="flex items-center bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200"
+        className="flex items-center bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200 dark:border-none"
       >
         <input
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           placeholder="Add a new task..."
-          className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 outline-none"
+          className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400  dark:bg-[#253341] outline-none border-none"
           disabled={loading}
         />
         <button
