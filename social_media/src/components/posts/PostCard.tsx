@@ -7,7 +7,7 @@ import {
   faHeart,
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
-import { getProfileImage } from "../../shared/images";
+import { getProfileImage  , getPostImage} from "../../shared/images";
 
 interface Props {
   post: Post;
@@ -44,7 +44,7 @@ export default function PostCard({
 
         <img
           className="rounded-2xl border border-gray-600 my-3 mr-2 w-full"
-          src="https://images.nature.com/original/magazine-assets/d41586-019-00653-5/d41586-019-00653-5_16459150.jpg"
+          src={getPostImage(post.id)}
         />
 
         <div className="flex items-center w-full justify-between">

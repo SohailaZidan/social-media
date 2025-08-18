@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import MainPage from "../pages/MainPage";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
+import TodoList from "../components/todo/TodoList";
 
 export default function AppRoutes() {
   return (
@@ -28,6 +29,7 @@ export default function AppRoutes() {
       >
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/todo" element={<TodoList />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

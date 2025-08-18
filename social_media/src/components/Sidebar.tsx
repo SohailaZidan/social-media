@@ -27,29 +27,37 @@ const Sidebar = () => {
     <div>
       <nav className="mt-5">
         <NavLink
-        to="/home"
-        className={({ isActive }) =>
-          `mb-8  ${
-            isActive ? "link-active" : "link"
-          }`
-        }
-      >
-        <FontAwesomeIcon icon={faHouse} className="text-xl" />
-        <span className="icon">Home</span>
-      </NavLink>
+          to="/home"
+          className={({ isActive }) =>
+            `mb-8  ${isActive ? "link-active" : "link"
+            }`
+          }
+        >
+          <FontAwesomeIcon icon={faHouse} className="text-xl" />
+          <span className="icon">Home</span>
+        </NavLink>
 
-      <NavLink
-        to="/profile"
-        className={({ isActive }) =>
-          `mb-8  ${
-            isActive ? "link-active" : "link"
-          }`
-        }
-      >
-        <FontAwesomeIcon icon={faUser} className="text-xl" />
-        <span className="icon">Profile</span>
-      </NavLink>
- 
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            `mb-8  ${isActive ? "link-active" : "link"
+            }`
+          }
+        >
+          <FontAwesomeIcon icon={faUser} className="text-xl" />
+          <span className="icon">Profile</span>
+        </NavLink>
+        <NavLink
+          to="/todo"
+          className={({ isActive }) =>
+            `mb-8  ${isActive ? "link-active" : "link"
+            }`
+          }
+        >
+          <FontAwesomeIcon icon={faListUl} className="text-xl" />
+          <span className="icon">Todo</span>
+        </NavLink>
+
         <div className="link mb-8">
           <FontAwesomeIcon icon={faHashtag} className="text-xl" />
           <span className="icon">Explore</span>
@@ -66,11 +74,7 @@ const Sidebar = () => {
           <FontAwesomeIcon icon={faBookmark} className="text-xl" />
           <span className="icon">Bookmarks</span>
         </div>
-        <div className="link mb-8">
-          <FontAwesomeIcon icon={faListUl} className="text-xl" />
-          <span className="icon">Lists</span>
-        </div>
-        
+
         <div className="link mb-8">
           <FontAwesomeIcon icon={faEllipsis} className="text-xl" />
           <span className="icon">More</span>
